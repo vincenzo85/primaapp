@@ -32,7 +32,7 @@
         android:text="handle message from service"
         android:id="@+id/handlemessage"/>
 
-    
+
 
 
 
