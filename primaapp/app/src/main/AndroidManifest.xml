@@ -20,18 +20,16 @@
 
         <service
             android:name=".Myservice"
-            android:exported="false"></service>
-
+            android:exported="false" />
         <service
             android:name=".service.DownloadService"
-            android:exported="false"></service>
-
-
+            android:exported="false" />
 
         <activity
             android:name=".Sqlite.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.DownloadReceiver"></activity>
     </application>
 
 </manifest>
