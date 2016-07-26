@@ -20,11 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="start service"
+        android:onClick="startService"
         android:id="@+id/startService"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="stop service"
+        android:onClick="stopService"
         android:id="@+id/stopService"/>
     <Button
         android:layout_width="match_parent"
