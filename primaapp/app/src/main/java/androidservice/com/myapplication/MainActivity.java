@@ -29,71 +29,57 @@ public class MainActivity extends AppCompatActivity {
         load=(Button)findViewById(R.id.load);
         name=(EditText)findViewById(R.id.name);
         email=(EditText)findViewById(R.id.email);
-        save.setOnClickListener(new View.OnClickListener() {
+            save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+                public void onClick(View view) {
+                    //get the value of name ed email frome edittext
+                    String getName=name.getText().toString();
+                    String getEmail=email.getText().toString();
+                    //l'handler ha bisogno del context
+                    /* public DataHaandler(Context ctx) { this.ctx =ctx; dataBaseHelper = new DataBaseHelper(ctx);} */
+                    handler = new DataHaandler(getBaseContext());
+                    //apro il database
+                    handler.open();
 
+                    long id = handler.insertData(getName,getEmail);
+                    Toast.makeText(getBaseContext(),"Data inserted",Toast.LENGTH_LONG).show();
+                    handler.close(); } });
+                    //load prende i dati dal database
 
-                //get the value of name ed email frome edittext
-                String getName=name.getText().toString();
-                String getEmail=email.getText().toString();
-                //l'handler ha bisogno del context
+            load.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                                            String getName,getEmail;
+                                            getName="";
+                                            getEmail="";
+                                            handler = new DataHaandler(getBaseContext());
+                                            handler.open(); //get value from database public Cursor retunData () return sqLiteDatabase.query(TABLE_NAME,new String[]{NAME,EMAIL},null,null,null,null,null,null);}
+                                            //di conseguenza mi serve un cursor
+                                            Cursor c = handler.retunData(); //controllo se il cursor è al primo elemento faccio un loop
+                                                if(c.moveToFirst()){
+                                                do
+                                                { getName = c.getString(0);
+                                                  getEmail= c.getString(1); }
+                                                while(c.moveToNext());
+                                                Toast.makeText(getBaseContext(),"Name : "+getName + "Email : "+ getEmail,Toast.LENGTH_LONG).show();
+                                                handler.close(); }
 
-                /*
-                public DataHaandler(Context ctx) {
-                this.ctx =ctx;
-                dataBaseHelper = new DataBaseHelper(ctx);}
-                */
-                handler = new DataHaandler(getBaseContext());
-                //apro il database
-                handler.open();
-                // public Cursor retunData () return sqLiteDatabase.query(TABLE_NAME,new String[]{NAME,EMAIL},null,null,null,null,null,null);}
-                //di conseguenza mi serve un cursor
-                /*Cursor c = handler.retunData(); //controllo se il cursor è al primo elemento faccio un loop
-                if(c.moveToFirst())
-                {
-                    do{
-                        getName = c.getString(0);
-                        getEmail=c.getString(1);
-                    }
-                    while(c.moveToNext());
-                 }*/
-                long id = handler.insertData(getName,getEmail);
-                Toast.makeText(getBaseContext(),"Data inserted",Toast.LENGTH_LONG).show();
-                handler.close();
-
-
-
-
-
-
-
+                    }});}
 
 
 
-
-
-
-            }
-        });
-
-
-    }
 
     public void startService (View v)
     {
         Intent intent = new Intent(this, Myservice.class) ;
         intent.putExtra(Myservice.KEY, Myservice.NUOVIPOST);
         startService(intent);
-
     }
 
-    public void stopService (View v){
-
+    public void stopService (View v)
+    {
         Intent intent = new Intent(this, Myservice.class) ;
         stopService(intent);
-
-
     }
 
     public void handlemessage (View v)
@@ -101,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Myservice.class) ;
         intent.putExtra(Myservice.KEY, Myservice.POSTTAG);
         startService(intent);
-
     }
 
 
