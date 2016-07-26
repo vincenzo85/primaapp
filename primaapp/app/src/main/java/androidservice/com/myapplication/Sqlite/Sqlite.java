@@ -1,5 +1,6 @@
 package androidservice.com.myapplication.Sqlite;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
@@ -12,15 +13,16 @@ import android.widget.TextView;
  */
 public class Sqlite extends AppCompatActivity {
 
-    Button btn;
-    TextView t1,t2,t3;
+    //crea o apre un database di nome Database wordpress
+ final SQLiteDatabase db = openOrCreateDatabase("Database_wordpress_post", MODE_PRIVATE, null);
 
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView();
+    //crea una tabella
 
 
-    }
+
+
+
+
+
 }

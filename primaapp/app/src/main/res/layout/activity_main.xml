@@ -35,14 +35,28 @@
         android:id="@+id/handlemessage"
         android:onClick="handlemessage"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/email"/>
 
-
-
-    
-
-
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="save"
+        android:id="@+id/save"
+        android:onClick="handlemessage"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="load"
+        android:id="@+id/load"
+        android:onClick="handlemessage"/>
 
 
 </LinearLayout>
