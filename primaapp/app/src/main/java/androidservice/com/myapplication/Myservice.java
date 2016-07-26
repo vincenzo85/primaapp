@@ -2,7 +2,19 @@ package androidservice.com.myapplication;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.telecom.Connection;
 import android.widget.Toast;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import androidservice.com.myapplication.Sqlite.HttpUtils;
+import androidservice.com.myapplication.Sqlite.httprequest;
 
 /**
  * Created by Utente on 26/07/2016.
@@ -78,8 +90,27 @@ public class Myservice extends IntentService {
 
                 break;
             case POSTTAG:
+                String url="http://openamat.altervista.org/api/get_recent_posts/";
+                try {
+                    URL connectionUrl = new URL(url);
+                    HttpURLConnection connection = (HttpURLConnection) connectionUrl.openConnection();
+                    OutputStream os = connection.getOutputStream();
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                    writer.flush();
+                    writer.close();
+                    os.close();
+
+                    /////e ora????
 
 
+
+
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
                 break;
