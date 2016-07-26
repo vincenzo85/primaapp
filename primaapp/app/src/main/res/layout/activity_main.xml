@@ -32,7 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="handle message from service"
-        android:id="@+id/handlemessage"/>
+        android:id="@+id/handlemessage"
+        android:onClick="handlemessage"/>
 
 
 

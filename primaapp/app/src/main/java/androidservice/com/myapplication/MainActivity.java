@@ -29,4 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void handlemessage (View v)
+    {
+        Intent intent = new Intent(this, Myservice.class) ;
+        intent.putExtra(Myservice.KEY, Myservice.POSTTAG);
+        startService(intent);
+
+    }
+
 }

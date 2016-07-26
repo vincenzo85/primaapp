@@ -14,8 +14,8 @@ public class Myservice extends IntentService {
     public static final String KEY="001";
     //con questa chiave posso chiamare il service in funzione della costante
 
-    public Myservice(String name) {
-        super(name);
+    public Myservice() {
+        super("nulla da dire");
     }
 
     @Override
@@ -37,20 +37,33 @@ public class Myservice extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
 
-        final int i = intent.getIntExtra(KEY, -1);
+        /*synchronized (this)
+        {
+            int count = 0;
+            while (count<10)
+            {
+
+                try {
+                    wait(1500);
+                    count++;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }*/
+
+       final int i = intent.getIntExtra(KEY, -1);
 
         String risultato="nessun risultato ricevuto";
 
 
-        switch (i)
-        {
+        switch (i) {
             case NUOVIPOST:
 
-                synchronized (this)
-                {
+                synchronized (this) {
                     int count = 0;
-                    while (count<10)
-                    {
+                    while (count < 10) {
 
                         try {
                             wait(1500);
@@ -65,7 +78,13 @@ public class Myservice extends IntentService {
 
                 break;
             case POSTTAG:
+
+                
+
+
                 break;
+        }
+
 
 
         }
@@ -74,4 +93,4 @@ public class Myservice extends IntentService {
 
 
     }
-}
+
